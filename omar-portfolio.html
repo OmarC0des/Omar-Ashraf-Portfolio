@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Omar | Python Automation & Web Scraping</title>
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --text: #1b1f27;
+  --muted: #5a6372;
+  --border: #e1e5ec;
+  --accent: #2f6fed;
+  --accent-soft: #e6eeff;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1218;
+    --surface: #181c25;
+    --text: #e8ebf1;
+    --muted: #9aa3b2;
+    --border: #2a303c;
+    --accent: #6c9bff;
+    --accent-soft: #1f2a44;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1218;
+  --surface: #181c25;
+  --text: #e8ebf1;
+  --muted: #9aa3b2;
+  --border: #2a303c;
+  --accent: #6c9bff;
+  --accent-soft: #1f2a44;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+nav { padding: 18px 0; border-bottom: 1px solid var(--border); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.logo { font-weight: 700; font-size: 1.1rem; }
+nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: .95rem; }
+nav a:hover { color: var(--accent); }
+.hero { padding: 64px 0 40px; }
+.hero-inner { display: flex; align-items: center; gap: 40px; flex-wrap: wrap-reverse; }
+.hero-text { flex: 1 1 340px; }
+.avatar { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent); background: #000; flex: 0 0 auto; margin: 0 auto; }
+.tag {
+  display: inline-block; background: var(--accent-soft); color: var(--accent);
+  padding: 4px 12px; border-radius: 999px; font-size: .85rem; font-weight: 600;
+}
+h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.15; margin: 16px 0 12px; }
+.hero p { color: var(--muted); font-size: 1.1rem; max-width: 560px; margin: 0 0 24px; }
+.btn {
+  display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+  padding: 10px 20px; border-radius: 8px; font-weight: 600;
+}
+.btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); margin-left: 8px; }
+section { padding: 40px 0; }
+h2 { font-size: 1.5rem; margin: 0 0 20px; }
+.skills { display: flex; flex-wrap: wrap; gap: 10px; }
+.skills span {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 6px 14px; border-radius: 8px; font-size: .95rem;
+}
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px; display: flex; flex-direction: column;
+}
+.card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.card p { margin: 0 0 14px; color: var(--muted); font-size: .95rem; flex: 1; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.chips span { background: var(--accent-soft); color: var(--accent); font-size: .78rem; padding: 2px 10px; border-radius: 999px; }
+.note { font-size: .85rem; color: var(--muted); border-left: 3px solid var(--accent); padding-left: 10px; margin: 0 0 14px; }
+.card a { color: var(--accent); font-weight: 600; text-decoration: none; font-size: .95rem; }
+.card a:hover { text-decoration: underline; }
+footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted); font-size: .9rem; text-align: center; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="logo">Omar.py</span>
+    <div>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+   <div class="hero-text">
+    <span class="tag">Open to small projects</span>
+    <h1>Hi, I'm Omar Ashraf. I make boring tasks automatic.</h1>
+    <p>I'm a 14-year-old Python developer. I build automation scripts and web scrapers that save time.</p>
+    <a class="btn" href="#projects">See my projects</a>
+    <a class="btn ghost" href="#contact">Contact me</a>
+   </div>
+   <img class="avatar" src="avatar.jpeg" alt="Omar Ashraf" width="200" height="200" />
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About me</h2>
+    <p>I started coding with Python because I like solving problems and saving time. Now I focus on two things: <strong>automation</strong> and <strong>web scraping</strong>. I’m still learning every day, and I like to improve my old code when I learn something better.</p>
+    <p>My English is good for reading documentation and working in writing. I'm always getting better.</p>
+    <div class="skills">
+      <span>Python</span>
+      <span>Automation</span>
+      <span>Web scraping</span>
+      <span>Playwright</span>
+      <span>File handling</span>
+      <span>Git &amp; GitHub</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <div class="grid">
+
+      <article class="card">
+         <h3>File Organizer</h3> <!-- file organizer -->
+        <p>A Python script that cleans up a messy folder. It looks at each file and moves it into the right folder, like Images, Documents, or Videos.</p>
+        <div class="chips"><span>Python</span><span>os</span><span>shutil</span></div>
+        <a href="https://github.com/OmarC0des/files-organizer" aria-label="View File Organizer on GitHub">View on GitHub →</a>
+      </article>
+
+      <article class="card">
+        <h3>Password Generator</h3> <!-- p gen --> 
+        <p>A simple tool that creates random passwords with letters, numbers, and symbols. You choose the length.</p>
+        <div class="chips"><span>Python</span><span>random</span></div>
+        <p class="note">Learning note: this version uses the <code>random</code> module. For real security, <code>secrets</code> is the better choice. It's my next upgrade.</p>
+        <a href="https://github.com/OmarC0des/password-generator" aria-label="View Password Generator on GitHub">View on GitHub →</a>
+      </article>
+
+      <article class="card">
+        <h3>Wikipedia Article Scraper</h3> <!-- wikipedia scraper -->
+        <p>A script that opens a Wikipedia article in a browser and collects its useful data, like the title and text. It uses Playwright to control the browser.</p>
+        <div class="chips"><span>Python</span><span>Playwright</span><span>Scraping</span></div>
+        <a href="https://github.com/OmarC0des/Wikipedia-article-scraper" aria-label="View Wikipedia Scraper on GitHub">View on GitHub →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Want to talk about a project? Send me a message. A parent or guardian may help with communication.</p>
+    <a class="btn" href="mailto:omarcodes0@proton.me">omarcodes0@proton.me</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 Omar.
+    <br>
+    built with plain HTML and CSS. (Vibe coded for now)
+  </div>
+</footer>
+
+</body>
+</html>
